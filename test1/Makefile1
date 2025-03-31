@@ -1,0 +1,18 @@
+CC=gcc
+CFLAGS=-Wall -std=c99 -g -O0
+BUILD=build
+
+.PHONY : all countdown
+
+all: countdown
+
+countdown: countdown.c
+	mkdir -p $(BUILD)
+	$(CC) $(CFLAGS) -o $(BUILD)/$@ $<
+
+test_static:
+	./$(BUILD)/client_static
+
+clean:
+	rm -rf $(BUILD)
+	find $(DIR2) -type f -delete
